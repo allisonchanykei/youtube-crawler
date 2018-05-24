@@ -1,7 +1,8 @@
 const { google } = require('googleapis');
 const request = require("request");
 const cheerio = require('cheerio');
-const config = require("./config");
+const config = require("./config/config");
+const path = require("path");
 const fs = require("fs");
 
 const service = google.youtube({
@@ -52,6 +53,9 @@ async function main(query) {
 };
 
 var filePath = process.argv[2];
+if (!path.isAbsolute(filePath)){
+    filePath = path.join(process.cwd(),filePath);
+}
 if (fs.existsSync(filePath)) {
     fs.readFile(filePath, function (err, data) {
         if (err) {
