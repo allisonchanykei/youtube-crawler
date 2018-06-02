@@ -1,7 +1,7 @@
 ## Purpose
 To computerize the process of gathering information on Youtube channels. 
 
-This program gathers the Youtube, Facebook, Twitter and Email of Youtube channels based on their names or search query. It is especially useful when you are trying to gather a large pool of potential influencers in a short amount of time.
+This program gathers the Youtube URL, Facebook, Twitter, and Email of Youtube channels based on their names or search query. It is especially useful when you are trying to gather a large pool of potential influencers in a short amount of time.
 
 ## Setup
 
