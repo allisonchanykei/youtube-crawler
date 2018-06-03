@@ -10,7 +10,8 @@ async function getYoutubeSearchResult(query, maxResults, nextPageToken = "") {
         type: "channel",
         q: query,
         part: "snippet",
-        maxResults: maxResults
+        maxResults: maxResults,
+        pageToken: nextPageToken
     });
     return res.data;
 }
@@ -40,12 +41,12 @@ async function getUrls(youtubeUrl, name) {
             stats = stats.replace(" ", ",");
             stats = stats.trim();
 
-            if (stats.split(" ")[0] < 100) {
-                return;
-            }
+            // if (stats.split(",")[0] < 100) {
+            //     return;
+            // }
 
             email = extractEmails(body);
-            console.log(name + ", " + youtubeUrl + ", " + facebookUrl + ", " + twitterUrl + ", " + email + ", " + stats);
+            console.log('"' + name + '", ' + youtubeUrl + ", " + facebookUrl + ", " + twitterUrl + ", " + email + ", " + stats);
         }
     );
 }
@@ -89,6 +90,10 @@ async function fromString(query, limit) {
             const title = item.snippet.channelTitle;
             getUrls(youtubeUrl, title);
         });
+        if (result.items.length < maxResults) {
+            //Last page
+            return;
+        }
         count++;
     }
 }
@@ -119,9 +124,8 @@ if (flag == "-f") {
 } else if (flag == "-q") {
     var query = process.argv[3];
     var limit = 500;
-    if (process.argv.length == 5) {
+    if (process.argv.length >= 5) {
         limit = process.argv[4];
     }
-
     fromString(query, limit).catch(console.error);
 }
