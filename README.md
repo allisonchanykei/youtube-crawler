@@ -11,10 +11,16 @@ This program gathers the Youtube URL, Facebook, Twitter, and Email of Youtube ch
 
 ## Usage
 
-1.  To get contact information from channel names from a file:
+1.  To get contact information from channel:
 
-    Create a list of channel names in txt format, then run `node index.js -f <path to file>`
+    Create a list of channel names in txt format, then run 
+    ```node index.js channel -f <path to file>```
+    or
+    ```node index.js channel -s <channel name>```
 
 2.  To get a list of channels with contact information from a search query:
 
-    Run `node index.js -q <query> <optional - maximum number of results>`
+     Create a list of search strings in txt format, then run 
+    ```node index.js query -f <path to file>```
+    or
+    ```node index.js query -s <search string>```
