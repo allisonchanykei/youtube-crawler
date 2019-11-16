@@ -16,6 +16,7 @@ async function getYoutubeSearchResult(query, maxResults, nextPageToken = "") {
     return res.data;
 }
 
+// Uses cheerio to scrape youtubeUrl for Facebook, Twitter Url 
 async function getUrls(youtubeUrl, name) {
     request(
         {
